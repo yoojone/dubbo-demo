@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-lazy-init="false">
+
+    <dubbo:application name="dubbo-demo-provider" />
+
+    <dubbo:registry address="192.168.1.138:2181" protocol="zookeeper"/>
+
+    <!-- 定义暴露服务的端口号  可以不配置，或者port=-1  代表开启一个未被占用的端口-->
+    <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
+
+    <!-- 服务提供者缺省值配置 -->
+    <!--<dubbo:provider protocol="dubbo" default="true" token="false"
+                    threads="${dubbo.provider.threads}"
+                    threadpool="cached"
+                    retries="0"
+                    timeout="${dubbo.provider.timeout}"
+                    cluster="failfast"
+                    port="${dubbo.provider.port}"
+                    payload="${dubbo.provider.payload}"
+                    loadbalance="leastactive" />-->
+
+
+    <!-- 暴露具体的服务接口 -->
+    <dubbo:service retries="3" interface="com.wl.api.service.TestService"
+                   ref="testService"></dubbo:service>
+
+    <dubbo:annotation package="com.wl.api.service" />
+</beans>
