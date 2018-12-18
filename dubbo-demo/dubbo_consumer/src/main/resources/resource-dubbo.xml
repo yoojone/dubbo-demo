@@ -13,7 +13,7 @@
     <dubbo:application name="dubbo-demo-consumer"></dubbo:application>
 
     <!-- 注册中心的配置，用于消费者的监听 -->
-    <dubbo:registry protocol="zookeeper" address="{zookeeper.address}"></dubbo:registry>
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}"></dubbo:registry>
 
     <!-- 监听服务，通过注册中心去进行查找，查找到后进行服务调用 -->
     <dubbo:reference id="testService" interface="com.wl.api.service.TestService"
