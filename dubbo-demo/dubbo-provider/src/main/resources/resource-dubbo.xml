@@ -13,7 +13,7 @@
 
     <dubbo:application name="dubbo-demo-provider" />
 
-    <dubbo:registry address="{zookeeper.address}" protocol="zookeeper"/>
+    <dubbo:registry address="${zookeeper.address}" protocol="zookeeper"/>
 
     <!-- 定义暴露服务的端口号  可以不配置，或者port=-1  代表开启一个未被占用的端口-->
     <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
